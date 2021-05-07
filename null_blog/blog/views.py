@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from blog.models import Post, Comment
 from blog.forms import AuthForm, PostForm, CommentForm
@@ -20,12 +22,16 @@ def indexView(request):
         'is_logged_in': is_logged_in
     }
 
+    if is_logged_in:
+        context['user'] = request.user
+
     return render(request, 'blog/index.html', context)
 
 
 # POSTS
 
 # POST '/post/'
+@login_required
 def createPost(request):
     if request.method == 'POST':
         # get the results from the form
@@ -43,7 +49,7 @@ def createPost(request):
             post.save()
 
             # after saving the post, go to it's page
-            return post(request, post.id)      
+            return postDetailView(request, post.id)      
     else: # method == 'GET'
         # create the form to be displayied to the user
         form = PostForm()
@@ -53,7 +59,6 @@ def createPost(request):
         'form': form,
         'is_logged_in': is_logged_in
     }
-
 
     return render(request, 'blog/create.html', context)
 
@@ -86,7 +91,7 @@ def postDetailView(request, post_id, error=None, comment_form=None):
 
     context['comment_form'] = form
     
-    return render(request, 'blog/detail.html')
+    return render(request, 'blog/detail.html', context)
 
 # POST '/post/[post_id]/delete'
 def deletePostView(request, post_id):
@@ -164,13 +169,14 @@ def deleteCommentView(request):
 # PROFILE
 
 # GET '/profile/[user_id]/'
+@login_required
 def profileView(request, user_id):
     if request.method == 'GET':
         # get the user id from the session
         user = request.user
 
         # check if the user id from the URL is the same as the one from the session and redirect to home page if these don't match
-        if user != user_id:
+        if user.id != user_id:
             return redirect('/')
         
         # get the user's posts
@@ -197,7 +203,7 @@ def profileDeleteView(request, user_id):
         user = request.user
 
         # check if the user id from the URL is the same as the one from the session and delete the user if so
-        if user == user_id:
+        if user.id == user_id:
             # delete the user
             User.objects.get(pk=user_id).delete()
 
@@ -237,10 +243,10 @@ def signupView(request):
         # for a GET request display an authentication form
         form = AuthForm()
 
-        return render(request, 'blog/auth.html', {
-            'form': form,
-            'auth_type': 'signup' # a variable to indicate auth.html to display the signup page instead of the login page
-        })
+    return render(request, 'blog/auth.html', {
+        'form': form,
+        'auth_type': 'signup' # a variable to indicate auth.html to display the signup page instead of the login page
+    })
 
 # POST '/login/'
 def loginView(request):
@@ -276,9 +282,8 @@ def loginView(request):
             'auth_type': 'login' # a variable to indicate auth.html to display the login page instead of the signup page
         })
 
-# POST '/logout/'
+# GET '/logout/'
 def logoutView(request):
-    if request.method == 'POST':
-        logout(request)
+    logout(request)
 
     return redirect('/')
