@@ -11,8 +11,8 @@ passwordRegex = RegexValidator(
     )
 
 class AuthForm(forms.Form):
-    username = forms.CharField(label='username', max_length=64)
-    password = forms.CharField(widget=forms.PasswordInput(), label='password', max_length=64, validators=[passwordRegex])
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'input'}), label=False, max_length=64)
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}), label=False, max_length=64, validators=[passwordRegex])
 
 class PostForm(ModelForm):
     class Meta:
