@@ -15,22 +15,48 @@
     {% include './nav.html' %}
 
     <main>
-        <h1>NULL++ Blog</h1>
-        <p><a href='/post/'>Write a post</a></p>
+        <div id='heading'>
+            <h1>NULL++ Blog</h1>
+            <p><a href='/post/'>Write a post</a></p>
+        </div>
     
-        {% for post in post_list %}
-            <div class='post'>
-                <a href='/post/{{ post.id }}/'>
-                    {% if post.image %}
-                        <img src='{{ post.image.url }}' />
-                    {% endif %}
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.content|make_list|slice:"0:256"|join:""|add:"..." }}</p>
-                    <p>{{ post.author }}</p>
-                    <p>{{ post.pub_date }}</p>
-                </a>
-            </div>
-        {% endfor %}
+        <div id='posts'>
+            {% for post in post_list %}
+                {% if forloop.first %}
+                    <div id='first-post'>
+                        <a href='/post/{{ post.id }}/'>
+                            {% if post.image %}
+                                <div id='first-post-image'>                                    
+                                    <img src='{{ post.image.url }}' />
+                                </div>
+                            {% endif %}
+                            <div id='first-post-right'>
+                                <h3 class='post-title'>{{ post.title }}</h3>
+                                <p class='post-p'>{{ post.content|make_list|slice:"0:128"|join:""|add:"..." }}</p>
+                                <div class='post-meta-container'>
+                                    <p class='post-meta'>{{ post.author }}</p>
+                                    <p class='post-meta'>{{ post.pub_date }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class='post'>
+                        <a href='/post/{{ post.id }}/'>
+                            {% if post.image %}
+                                <img src='{{ post.image.url }}' />
+                            {% endif %}
+                            <h3 class='post-title'>{{ post.title }}</h3>
+                            <p class='post-p'>{{ post.content|make_list|slice:"0:256"|join:""|add:"..." }}</p>
+                            <div class='post-meta-container'>
+                                <p class='post-meta'>{{ post.author }}</p>
+                                <p class='post-meta'>{{ post.pub_date }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </main>
 
     {% include './footer.html' %}
