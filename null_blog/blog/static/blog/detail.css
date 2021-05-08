@@ -59,6 +59,7 @@
 #no-comments {
     font-size: 14px;
     opacity: .75;
+    margin-left: 30px;
 }
 
 hr {
@@ -122,5 +123,5 @@ hr {
 #comment-form .submit {
     cursor: pointer;
     background-color: #2EAABB;
-    padding: 9px 18px;
+    padding: 10px 22.5px;
 }

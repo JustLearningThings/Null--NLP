@@ -9,6 +9,7 @@ html, body {
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #FAFAFA;
 }
 
 ul, ol {
@@ -25,7 +26,7 @@ a {
     color: black;
 }
 
-a:focus {
+a:hover {
     opacity: .8;
 }
 
