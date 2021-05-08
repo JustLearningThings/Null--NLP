@@ -35,7 +35,7 @@ button, input[type='submit'] {
 }
 
 main {
-    margin: auto 30px;
+    margin: auto 30px 150px 30px;
 }
 
 .post-title {
@@ -74,7 +74,6 @@ main {
 }
 
 .submit {
-    cursor: pointer;
     background-color: #2EAABB;
     color: white;
     border-radius: 12px;
