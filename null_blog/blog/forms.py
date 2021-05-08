@@ -21,7 +21,7 @@ class PostForm(ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(max_length=256, widget=forms.Textarea, label='Leave a comment')
+    content = forms.CharField(max_length=256, widget=forms.Textarea(attrs={'class': 'input', 'placeholder': 'Leave a comment...'}), label=False)
 
     class Meta:
         model = Comment
