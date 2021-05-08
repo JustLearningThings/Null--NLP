@@ -15,6 +15,10 @@ class AuthForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}), label=False, max_length=64, validators=[passwordRegex])
 
 class PostForm(ModelForm):
+    title = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'Title'}), label=False, max_length=64)
+    content = forms.CharField(widget=forms.Textarea(attrs={'class': 'input', 'placeholder': 'Content'}), label=False, max_length=2048)
+    image = forms.ImageField(label=False)
+
     class Meta:
         model = Post
         fields = ['title', 'content', 'image']

@@ -2,21 +2,27 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/create.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/create.css' %}">
 {% endblock %}
-
-{% include './nav.html' %}
 
 {% block body %}
     {% if error %}
         {% include 'blog/error.html' with error=error %}
     {% endif %}
 
-    <h2>Create a post</h2>
+    {% include './nav.html' %}
 
-    <form action='/post/' method='POST' enctype='multipart/form-data'>
-        {% csrf_token %}
-        {{ form }}
-        <input type='submit' value='Submit'>
-    </form>
+    <main>
+        <h2>Create a post</h2>
+    
+        <form action='/post/' method='POST' enctype='multipart/form-data' id='form'>
+            {% csrf_token %}
+            {{ form }}
+            <input type='submit' value='Submit' class='submit'>
+        </form>
+    </main>
+
+    {% include './footer.html' %}
 {% endblock %}
