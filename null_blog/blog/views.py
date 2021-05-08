@@ -125,7 +125,7 @@ def createCommentView(request):
         # if form.is_valid() and not is_offensive(request.POST['content']):
         if form.is_valid():
             # create an instance of the comment with the data form the form
-            comment = form.save(commit=false)
+            comment = form.save(commit=False)
 
             # add new attributes to it
             comment.author = request.user
