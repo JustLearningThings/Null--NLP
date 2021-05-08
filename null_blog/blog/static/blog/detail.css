@@ -17,6 +17,7 @@
 
 #post-delete input[type='submit'] {
     cursor: pointer;
+    background: none;
 }
 
 #post-delete:hover {
