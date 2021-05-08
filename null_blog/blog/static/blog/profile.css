@@ -95,3 +95,7 @@ main {
     display: block;
     bottom: 10px;
 }
+
+input[type='submit'] {
+    background: none;
+}
