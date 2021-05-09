@@ -9,7 +9,7 @@ from blog.forms import AuthForm, PostForm, CommentForm
 
 from django.utils import timezone
 
-# from .nlp_model import is_offensive
+from .model.nlp_model import is_offensive
 
 # GET '/'
 def indexView(request):
@@ -30,15 +30,27 @@ def indexView(request):
 
 # POSTS
 
-# POST '/post/'
+# GET, POST '/post/'
 @login_required
 def createPost(request):
     if request.method == 'POST':
         # get the results from the form
         form = PostForm(request.POST, request.FILES)
 
-        # if form.is_valid() and not is_offensive(request.POST['content']):
         if form.is_valid():
+        # if form.is_valid():
+            if is_offensive(request.POST['content']):
+                is_logged_in = request.user.is_authenticated
+                context = {
+                    'form': form,
+                    'is_logged_in': is_logged_in,
+                    'error': 'Offensive language is prohibited !'
+                }
+
+                return render(request, 'blog/create.html', context)                
+
+            print(is_offensive(request.POST['content'])[0])
+
             # to save the post to the db it is needed to add extra fields
             # in order to do so, we're saving the current data in post
             post = form.save(commit=False)
