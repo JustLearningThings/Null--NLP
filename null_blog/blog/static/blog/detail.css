@@ -15,7 +15,7 @@
     top: 38px;
 }
 
-#post-delete input[type='submit'] {
+#post-delete input[type='submit'], .comment-delete-form input[type='submit'] {
     cursor: pointer;
     background: none;
 }
