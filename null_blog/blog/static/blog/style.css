@@ -91,5 +91,5 @@ main {
     color: var(--accent-color);
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 .rotate-180 { transform: rotate(180deg); }
