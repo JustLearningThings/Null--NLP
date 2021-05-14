@@ -39,10 +39,9 @@ def createPost(request):
 
         if form.is_valid():
             if is_offensive(request.POST['content']):
-                is_logged_in = request.user.is_authenticated
                 context = {
                     'form': form,
-                    'is_logged_in': is_logged_in,
+                    'is_logged_in': request.user.is_authenticated,
                     'error': 'Offensive language is prohibited !'
                 }
 
@@ -63,10 +62,9 @@ def createPost(request):
         # create the form to be displayied to the user
         form = PostForm()
 
-    is_logged_in = request.user.is_authenticated
     context = {
         'form': form,
-        'is_logged_in': is_logged_in
+        'is_logged_in': request.user.is_authenticated
     }
 
     return render(request, 'blog/create.html', context)
@@ -79,11 +77,10 @@ def postDetailView(request, post_id, error=None, comment_form=None):
     # get the post's comments
     comments = Comment.objects.filter(post=post_id)
 
-    is_logged_in = request.user.is_authenticated
     context = {
         'post': post,
         'comments': comments,
-        'is_logged_in': is_logged_in,
+        'is_logged_in': request.user.is_authenticated,
         'post_id': post_id
     }
 
@@ -103,6 +100,7 @@ def postDetailView(request, post_id, error=None, comment_form=None):
     return render(request, 'blog/detail.html', context)
 
 # POST '/post/[post_id]/delete'
+@login_required
 def deletePostView(request, post_id):
     if request.method == 'POST':
         # get the post from the db
@@ -123,6 +121,7 @@ def deletePostView(request, post_id):
 # COMMENTS
 
 # POST '/comment/'
+@login_required
 def createCommentView(request):
     # get the id of the post
     post_id = request.POST['post_id']
@@ -157,6 +156,7 @@ def createCommentView(request):
         return postDetailView(request=request, post_id=post_id, error='Incorrect method ! (cannot GET at \'/comment/)\'')
 
 # POST '/comment/delete'
+@login_required
 def deleteCommentView(request):
     # get the id of the post
     post_id = request.POST['post_id']
@@ -209,6 +209,7 @@ def profileView(request, user_id):
         return redirect('/')
 
 # POST '/profile/[user_id]/delete'
+@login_required
 def profileDeleteView(request, user_id):
     if request.method == 'POST':
         # get the user id from the session
@@ -295,6 +296,7 @@ def loginView(request):
         })
 
 # GET '/logout/'
+@login_required
 def logoutView(request):
     logout(request)
 
