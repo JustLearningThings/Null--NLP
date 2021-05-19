@@ -33,7 +33,7 @@ Our project has the following structure:
 We use a __Logistic Regression__ model to classify an offensive or an ordinary text content.
 
 ### Preprocessing
-For the preprocessing we created the __TextTransformer__ class. Take a look at it here: 
+For the preprocessing we created the `TextTransformer` class. Take a look at it here: 
 
 ### Dataset
 You can find the dataset [here](https://www.kaggle.com/mrinaal007/hate-speech-detection).
@@ -57,4 +57,4 @@ As you can see only the post and comment views are working with the ML model. Th
 ### Adding the model
 To integrate the model into the django backed we created a dedicated folder for our model named *model* in the *blog* folder. It contains a pickle of the model, a file called *nlp_model.py* and a file called *preprocessing.py*.
 
-The *nlp_model.py* file is responsible for unpacking the model from pickle and exporting a function that predicts whether a given text is offensive or not. This function uses a *transformer*. The *transformer* here is an instance of __TextTransformer__ class declared in the *preprocessing.py* file.
+The *nlp_model.py* file is responsible for unpacking the model from pickle and exporting a function that predicts whether a given text is offensive or not. This function uses a *transformer*. The *transformer* here is an instance of `TextTransformer` class declared in the *preprocessing.py* file.
