@@ -290,7 +290,7 @@ def loginView(request):
         # for a GET request display an authentication form
         form = AuthForm()
 
-        return render(request, 'blog/auth.html', {
+    return render(request, 'blog/auth.html', {
             'form': form,
             'auth_type': 'login' # a variable to indicate auth.html to display the login page instead of the signup page
         })
