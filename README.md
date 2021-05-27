@@ -40,7 +40,7 @@ You can find the dataset [here](https://www.kaggle.com/mrinaal007/hate-speech-de
 
 ### Files
 If you want to look at the history of developing our model, there are 2 files you can look at:
-1. In [This](https://github.com/JustLearningThings/Null--NLP/blob/main/ML_Model.ipynb) jupyter notebook played with different models to find the one which gives the best results. We chose __Logistic Regression__.
+1. In [this](https://github.com/JustLearningThings/Null--NLP/blob/main/ML_Model.ipynb) jupyter notebook we played with different models to find the one which gives the best results. We chose __Logistic Regression__.
 2. [This](https://colab.research.google.com/drive/1pS0WNQ4V3tGZb7ueKAq7bSrVlZQhpQyy?usp=sharing) is a Google Colab jupyter notebook that was used to train the latest version of the model. Here we used GridSearchCV to find the best hyperparameters for our Logistic Regression model and we trained it on them, then exported the file into __model.pkl__ pickle.
 
 ## Backend
