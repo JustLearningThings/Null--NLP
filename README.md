@@ -33,7 +33,7 @@ Our project has the following structure:
 We use a __Logistic Regression__ model to classify an offensive or an ordinary text content.
 
 ### Preprocessing
-For the preprocessing we created the `TextTransformer` class. Take a look at it here: 
+For the preprocessing we created the `TextTransformer` class. Take a look at it [here](https://github.com/JustLearningThings/Null--NLP/blob/main/null_blog/blog/model/preprocessing.py): 
 
 ### Dataset
 You can find the dataset [here](https://www.kaggle.com/mrinaal007/hate-speech-detection).
