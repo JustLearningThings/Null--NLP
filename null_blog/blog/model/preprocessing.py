@@ -79,7 +79,7 @@ class TextTransformer(BaseEstimator, TransformerMixin):
         '''
 
         if self.stopwords is not None:
-            return ''.join([word for word in text if word not in self.stopwords])
+            return ' '.join([word for word in word_tokenize(text) if word not in self.stopwords])
 
     def __get_hapaxes(self, text, eliminate=True):
         '''
@@ -98,7 +98,7 @@ class TextTransformer(BaseEstimator, TransformerMixin):
 
         # eliminating the hapaxes if needed (by default: needed)
         if eliminate:
-            text = ''.join([word for word in text if word not in self.hapaxes])
+            text = ' '.join([word for word in word_tokenize(text) if word not in self.hapaxes])
 
         return text
 

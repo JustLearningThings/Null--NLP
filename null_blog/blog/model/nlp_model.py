@@ -10,7 +10,7 @@ import os
 transformer = TextTransformer(stopwords=stopwords.words('english'), stemmer=PorterStemmer())
 
 # unpacking the model
-model_file_name = 'Logistic_Regression.pkl'
+model_file_name = 'model.pkl'
 path_to_model = os.path.join(os.getcwd(), f'blog\model\{model_file_name}')
 model = load(path_to_model)
 
