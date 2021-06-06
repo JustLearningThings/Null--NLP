@@ -10,6 +10,11 @@ passwordRegex = RegexValidator(
     'Password must contain at least one lowercase letter and at least one digit.'
     )
 
+'''
+ The following is a set of classes that define forms that the django template engine will interpret as HTML forms.
+ Each attribute in these classes is an HTML form input of type specified by the widget argument
+'''
+
 class AuthForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'input'}), label=False, max_length=64)
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input', 'placeholder': 'password'}), label=False, max_length=64, validators=[passwordRegex])

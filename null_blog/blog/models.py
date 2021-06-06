@@ -2,6 +2,13 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+'''
+ Django docs define models the following way:
+        A model is the single, definitive source of information about your data. 
+        It contains the essential fields and behaviors of the data you’re storing. 
+        Generally, each model maps to a single database table.
+ Each model can be constructed with a class, where each attribute is a field in the model stored in a database.
+'''
 
 class Post(models.Model):
     title = models.CharField(max_length=64)

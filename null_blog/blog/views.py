@@ -11,6 +11,12 @@ from django.utils import timezone
 
 from .model.nlp_model import is_offensive
 
+'''
+ The following functions are named views in Django.
+ A view is executed when a client hits a certain URL pattern (specified in the urls.py file).
+ A view can accept different HTTP request methods, but the ones used here are GET and POST.
+'''
+
 # GET '/'
 def indexView(request):
     # get the posts in descending order based on publication date
